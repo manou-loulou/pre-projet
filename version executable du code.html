@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang= »fr »>
+<head>
+    <meta charset= »UTF-8 »>
+    <meta name= »viewport » content= »width=device-width, initial-scale=1.0 »>
+    <title>IgoTech – Agence Digitale</title>
+    <style>
+        /* Reset et styles de base */de
+•	{
+            Margin : 0 ;
+            Padding : 0 ;
+            Box-sizing : border-box ;
+            Font-family : ‘Segoe UI’, Tahoma, Geneva, Verdana, sans-serif ;
+        }
+        
+        Body {
+            Line-height : 1.6 ;
+            Color : #333 ;
+            Background-color : #f9f9f9 ;
+        }
+        
+        .container {
+            Width : 90% ;
+            Max-width : 1200px ;
+            Margin : 0 auto ;
+            Padding : 20px 0 ;
+        }
+        
+        /* Header */
+        Header {
+            Background-color : #2c3e50 ;
+            Color : white ;
+            Padding : 20px 0 ;
+            Position : sticky ;
+            Top : 0 ;
+            z-index : 100 ;
+            box-shadow : 0 2px 10px rgba(0, 0, 0, 0.1) ;
+        }
+        
+        .header-container {
+            Display : flex ;
+            Justify-content : space-between ;
+            Align-items : center ;
+        }
+        
+        .logo {
+            Font-size : 24px ;
+            Font-weight : bold ;
+        }
+        
+        .logo span {
+            Color : #3498db ;
+        }
+        
+        Nav ul {
+            Display : flex ;
+            List-style : none ;
+        }
+        
+        Nav ul li {
+            Margin-left : 20px ;
+        }
+        
+        Nav ul li a {
+            Color : white ;
+            Text-decoration : none ;
+            Transition : color 0.3s ;
+        }
+        
+        Nav ul li a :hover {
+            Color : #3498db ;
+        }
+        
+        .mobile-menu-btn {
+            Display : none ;
+            Background : none ;
+            Border : none ;
+            Color : white ;
+            Font-size : 24px ;
+            Cursor : pointer ;
+        }
+        
+        /* Hero Section */
+        .hero {
+            Background : linear-gradient(135deg, #3498db, #2c3e50) ;
+            Color : white ;
+            Padding : 80px 0 ;
+            Text-align : center ;
+        }
+        
+        .hero h1 {
+            Font-size : 2.5rem ;
+            Margin-bottom : 20px ;
+        }
+        
+        .hero p {
+            Font-size : 1.2rem ;
+            Max-width : 700px ;
+            Margin : 0 auto 30px ;
+        }
+        
+        .btn {
+            Display : inline-block ;
+            Background-color : #e74c3c ;
+            Color : white ;
+            Padding : 12px 30px ;
+            Border-radius : 5px ;
+            Text-decoration : none ;
+            Font-weight : bold ;
+            Transition : background-color 0.3s ;
+        }
+        
+        .btn :hover {
+            Background-color : #c0392b ;
+        }
+        
+        /* Services Section */
+        .services {
+            Padding : 60px 0 ;
+            Background-color : white ;
+        }
+        
+        .section-title {
+            Text-align : center ;
+            Margin-bottom : 40px ;
+        }
+        
+        .section-title h2 {
+            Font-size : 2rem ;
+            Color : #2c3e50 ;
+            Position : relative ;
+            Display : inline-block ;
+            Padding-bottom : 10px ;
+        }
+        
+        .section-title h2 ::after {
+            Content : ‘’ ;
+            Position : absolute ;
+            Bottom : 0 ;
+            Left : 50% ;
+            Transform : translateX(-50%) ;
+            Width : 80px ;
+            Height : 3px ;
+            Background-color : #3498db ;
+        }
+        
+        .services-grid {
+            Display : grid ;
+            Grid-template-columns : repeat(auto-fit, minmax(250px, 1fr)) ;
+            Gap : 30px ;
+        }
+        
+        .service-card {
+            Background-color : #f9f9f9 ;
+            Padding : 30px ;
+            Border-radius : 5px ;
+            Text-align : center ;
+            Transition : transform 0.3s, box-shadow 0.3s ;
+        }
+        
+        .service-card :hover {
+            Transform : translateY(-10px) ;
+            Box-shadow : 0 10px 20px rgba(0, 0, 0, 0.1) ;
+        }
+        
+        .service-icon {
+            Font-size : 40px ;
+            Color : #3498db ;
+            Margin-bottom : 20px ;
+        }
+        
+        .service-card h3 {
+            Margin-bottom : 15px ;
+            Color : #2c3e50 ;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            Padding : 60px 0 ;
+            Background-color : #f9f9f9 ;
+        }
+        
+        .portfolio-filter {
+            Display : flex ;
+            Justify-content : center ;
+            Margin-bottom : 30px ;
+            Flex-wrap : wrap ;
+        }
+        
+        .filter-btn {
+            Background : none ;
+            Border : none ;
+            Padding : 8px 20px ;
+            Margin : 5px ;
+            Cursor : pointer ;
+            Border-radius : 20px ;
+            Transition : all 0.3s ;
+        }
+        
+        .filter-btn.active, .filter-btn :hover {
+            Background-color : #3498db ;
+            Color : white ;
+        }
+        
+        .portfolio-grid {
+            Display : grid ;
+            Grid-template-columns : repeat(auto-fill, minmax(300px, 1fr)) ;
+            Gap : 20px ;
+        }
+        
+        .portfolio-item {
+            Position : relative ;
+            Overflow : hidden ;
+            Border-radius : 5px ;
+            Height : 250px ;
+        }
+        
+        .portfolio-item img {
+            Width : 100% ;
+            Height : 100% ;
+            Object-fit : cover ;
+            Transition : transform 0.5s ;
+        }
+        
+        .portfolio-item :hover img {
+            Transform : scale(1.1) ;
+        }
+        
+        .portfolio-overlay {
+            Position : absolute ;
+            Top : 0 ;
+            Left : 0 ;
+            Width : 100% ;
+            Height : 100% ;
+            Background : rgba(52, 152, 219, 0.9) ;
+            Display : flex ;
+            Flex-direction : column ;
+            Justify-content : center ;
+            Align-items : center ;
+            Opacity : 0 ;
+            Transition : opacity 0.3s ;
+            Color : white ;
+            Padding : 20px ;
+            Text-align : center ;
+        }
+        
+        .portfolio-item :hover .portfolio-overlay {
+            Opacity : 1 ;
+        }
+        
+        .portfolio-overlay h3 {
+            Margin-bottom : 10px ;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            Padding : 60px 0 ;
+            Background-color : white ;
+        }
+        
+        .testimonials-container {
+            Max-width : 800px ;
+            Margin : 0 auto ;
+        }
+        
+        .testimonial-slide {
+            Text-align : center ;
+            Padding : 20px ;
+            Display : none ;
+        }
+        
+        .testimonial-slide.active {
+            Display : block ;
+        }
+        
+        .testimonial-avatar {
+            Width : 100px ;
+            Height : 100px ;
+            Border-radius : 50% ;
+            Object-fit : cover ;
+            Margin : 0 auto 20px ;
+            Border : 5px solid #3498db ;
+        }
+        
+        .testimonial-text {
+            Font-style : italic ;
+            Margin-bottom : 20px ;
+        }
+        
+        .testimonial-author {
+            Font-weight : bold ;
+            Color : #2c3e50 ;
+        }
+        
+        .testimonial-nav {
+            Display : flex ;
+            Justify-content : center ;
+            Margin-top : 20px ;
+        }
+        
+        .testimonial-dot {
+            Width : 12px ;
+            Height : 12px ;
+            Border-radius : 50% ;
+            Background-color : #bdc3c7 ;
+            Margin : 0 5px ;
+            Cursor : pointer ;
+            Transition : background-color 0.3s ;
+        }
+        
+        .testimonial-dot.active {
+            Background-color : #3498db ;
+        }
+        
+        /* Contact Section */
+        .contact {
+            Padding : 60px 0 ;
+            Background-color : #f9f9f9 ;
+        }
+        
+        .contact-container {
+            Display : grid ;
+            Grid-template-columns : repeat(auto-fit, minmax(300px, 1fr)) ;
+            Gap : 40px ;
+        }
+        
+        .contact-info h3 {
+            Margin-bottom : 20px ;
+            Color : #2c3e50 ;
+        }
+        
+        .contact-info p {
+            Margin-bottom : 15px ;
+        }
+        
+        .contact-icon {
+            Color : #3498db ;
+            Margin-right : 10px ;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            Width : 100% ;
+            Padding : 12px ;
+            Margin-bottom : 15px ;
+            Border : 1px solid #ddd ;
+            Border-radius : 5px ;
+        }
+        
+        .contact-form textarea {
+            Height : 150px ;
+            Resize : vertical ;
+        }
+        
+        .contact-form button {
+            Background-color : #3498db ;
+            Color : white ;
+            Border : none ;
+            Padding : 12px 30px ;
+            Border-radius : 5px ;
+            Cursor : pointer ;
+            Transition : background-color 0.3s ;
+        }
+        
+        .contact-form button :hover {
+            Background-color : #2980b9 ;
+        }
+        
+        /* Footer */
+        Footer {
+            Background-color : #2c3e50 ;
+            Color : white ;
+            Padding : 30px 0 ;
+            Text-align : center ;
+        }
+        
+        .social-links {
+            Margin : 20px 0 ;
+        }
+        
+        .social-links a {
+            Color : white ;
+            Margin : 0 10px ;
+            Font-size : 20px ;
+            Transition : color 0.3s ;
+        }
+        
+        .social-links a :hover {
+            Color : #3498db ;
+        }
+        
+        .copyright {
+            Margin-top : 20px ;
+            Font-size : 14px ;
+            Color : #bdc3c7 ;
+        }
+        
+        /* Responsive */
+        @media (max-width : 768px) {
+            .header-container {
+                Flex-direction : column ;
+                Text-align : center ;
+            }
+            
+            Nav ul {
+                Margin-top : 20px ;
+                Flex-direction : column ;
+                Align-items : center ;
+            }
+            
+            Nav ul li {
+                Margin : 10px 0 ;
+            }
+            
+            .mobile-menu-btn {
+                Display : block ;
+                Margin-top : 20px ;
+            }
+            
+            .hero h1 {
+                Font-size : 2rem ;
+            }
+            
+            .hero p {
+                Font-size : 1rem ;
+            }
+        }
+    </style>
+</head>
+<body>
+    < !—Header 
+    <header>
+        <div class= »container header-container »>
+            <div class= »logo »>Igo<span>Tech</span></div>
+            <nav>
+                <ul>
+                    <li><a href= »#home »>Accueil</a></li>
+                    <li><a href= »#services »>Services</a></li>
+                    <li><a href= »#portfolio »>Portfolio</a></li>
+                    <li><a href= »#testimonials »>Témoignages</a></li>
+                    <li><a href= »#contact »>Contact</a></li>
+                </ul>
+                <button class= »mobile-menu-btn »>☰</button>
+            </nav>
+        </div>
+    </header>
+
+    < !—Hero Section 
+    <section class= »hero » id= »home »>
+        <div class= »container »>
+            <h1>Création digitale sur mesure</h1>
+            <p>IgoTech transforme vos idées en expériences digitales mémorables. Notre agence vous accompagne dans tous vos projets web et marketing digital.</p>
+            <a href= »#contact » class= »btn »>Contactez-nous</a>
+        </div>
+    </section>
+
+    < !—Services Section 
+    <section class= »services » id= »services »>
+        <div class= »container »>
+            <div class= »section-title »>
+                <h2>Nos Services</h2>
+            </div>
+            <div class= »services-grid »>
+                <div class= »service-card »>
+                    <div class= »service-icon »>🌐</div>
+                    <h3>Création de sites web</h3>
+                    <p>Des sites web modernes, responsives et optimisés pour le SEO, adaptés à vos besoins spécifiques.</p>
+                </div>
+                <div class= »service-card »>
+                    <div class= »service-icon »>📱</div>
+                    <h3>Réseaux sociaux</h3>
+                    <p>Gestion complète de vos réseaux sociaux avec stratégie de contenu et community management.</p>
+                </div>
+                <div class= »service-card »>
+                    <div class= »service-icon »>🎨</div>
+                    <h3>Contenu visuel</h3>
+                    <p>Création de visuels impactants, logos, infographies et vidéos pour renforcer votre identité.</p>
+                </div>
+                <div class= »service-card »>
+                    <div class= »service-icon »>📈</div>
+
+
